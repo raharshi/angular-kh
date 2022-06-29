@@ -1,0 +1,42 @@
+<div *ngFor="let color of colors">
+  <p [ngStyle]="{ 'background-color': color == 'red' ? 'red' : 'green' }">
+    {{ color }}
+  </p>
+</div>
+
+<div *ngFor="let color of colors">
+  <p [ngStyle]="{ color: color }">
+    {{ color }}
+  </p>
+</div>
+
+<div *ngFor="let color of colors">
+  <p
+    [ngClass]="{
+      red: color == 'red',
+      orange: color == 'orange',
+      blue: color == 'blue'
+    }"
+  >
+    {{ color }}
+  </p>
+</div>
+
+<div *ngIf="display == true; else noData">
+  <p>Hello, Welcome to Angular</p>
+</div>
+
+<ng-template #noData>
+  <p>No Data is available</p>
+</ng-template>
+
+<button (click)="changeColor('red')">red</button>
+<button (click)="changeColor('orange')">orange</button>
+<button (click)="changeColor('blue')">blue</button>
+
+<div [ngSwitch]="clr">
+  <p *ngSwitchCase="'red'">red</p>
+  <p *ngSwitchCase="'orange'">orange</p>
+  <p *ngSwitchCase="'blue'">blue</p>
+  <p *ngSwitchDefault>grey</p>
+</div>

@@ -1,0 +1,5 @@
+<div class="bg-light p-5">
+  <h1>This is Parent Component</h1>
+  <h3>{{ childInput }}</h3>
+  <app-child [tName]="topicName" (notify)="getData($event)"></app-child>
+</div>

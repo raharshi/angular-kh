@@ -7,6 +7,9 @@ import { HeaderComponent } from './header/header.component';
 import { BindingComponent } from './binding/binding.component';
 import { FormsModule } from '@angular/forms';
 import { DirectivesComponent } from './directives/directives.component';
+import { CommunicationComponent } from './communication/communication.component';
+import { ParentComponent } from './communication/parent/parent.component';
+import { ChildComponent } from './communication/child/child.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +17,9 @@ import { DirectivesComponent } from './directives/directives.component';
     HeaderComponent,
     BindingComponent,
     DirectivesComponent,
+    CommunicationComponent,
+    ParentComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,

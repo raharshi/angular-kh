@@ -10,6 +10,9 @@ import { DirectivesComponent } from './directives/directives.component';
 import { CommunicationComponent } from './communication/communication.component';
 import { ParentComponent } from './communication/parent/parent.component';
 import { ChildComponent } from './communication/child/child.component';
+import { ContentProjectionComponent } from './content-projection/content-projection.component';
+import { CpParentComponent } from './content-projection/cp-parent/cp-parent.component';
+import { CpChildComponent } from './content-projection/cp-child/cp-child.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { ChildComponent } from './communication/child/child.component';
     DirectivesComponent,
     CommunicationComponent,
     ParentComponent,
-    ChildComponent
+    ChildComponent,
+    ContentProjectionComponent,
+    CpParentComponent,
+    CpChildComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,8 @@ import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@
 })
 export class ChildComponent implements OnInit, AfterViewInit {
 
+  test: string = "From Child Comp";
+  counter: number = 0;
   @Input('tName') childName!: string;
 
   @Output() notify: EventEmitter<string> = new EventEmitter<string>()
@@ -27,4 +29,11 @@ export class ChildComponent implements OnInit, AfterViewInit {
     this.notify.emit("Angular Output Decorator from Child Component");
   }
 
+  increment() {
+    this.counter++;
+  }
+
+  decrement() {
+    this.counter--;
+  }
 }

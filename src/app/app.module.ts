@@ -13,6 +13,7 @@ import { ChildComponent } from './communication/child/child.component';
 import { ContentProjectionComponent } from './content-projection/content-projection.component';
 import { CpParentComponent } from './content-projection/cp-parent/cp-parent.component';
 import { CpChildComponent } from './content-projection/cp-child/cp-child.component';
+import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CpChildComponent } from './content-projection/cp-child/cp-child.compone
     ChildComponent,
     ContentProjectionComponent,
     CpParentComponent,
-    CpChildComponent
+    CpChildComponent,
+    FormsComponent
   ],
   imports: [
     BrowserModule,

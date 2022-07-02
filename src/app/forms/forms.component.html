@@ -1,0 +1,153 @@
+<form
+  #loginForm="ngForm"
+  (ngSubmit)="loginForm.valid && onSubmit(loginForm)"
+  class="col-lg-6 m-auto"
+>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      name="email"
+      #email="ngModel"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Enter email"
+      [(ngModel)]="user.email"
+      minlength="2"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      required
+    />
+    <div>
+      <div *ngIf="loginForm.submitted && email?.errors?.required">
+        <p>email error</p>
+      </div>
+      <div *ngIf="loginForm.submitted && email?.errors?.minlength">
+        <p>Min Length should be 2</p>
+      </div>
+      <div *ngIf="loginForm.submitted && email?.errors?.pattern">
+        <p>Please enter a valid pattern</p>
+      </div>
+    </div>
+
+    <small id="emailHelp" class="form-text text-muted"
+      >We'll never share your email with anyone else.</small
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      #pass="ngModel"
+      name="password"
+      id="exampleInputPassword1"
+      placeholder="Password"
+      [(ngModel)]="user.password"
+      minlength="4"
+      required
+    />
+  </div>
+  <div>
+    <div *ngIf="loginForm.submitted && pass?.errors?.required">
+      <p>password error</p>
+    </div>
+    <div *ngIf="loginForm.submitted && pass?.errors?.minlength">
+      <p>Min Length should be 4</p>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div class="form-check mr-5">
+      <input
+        class="form-check-input"
+        type="radio"
+        #gender="ngModel"
+        name="exampleRadios"
+        id="gender"
+        value="option1"
+        [(ngModel)]="user.gender"
+        checked
+        required
+      />
+      <label class="form-check-label" for="exampleRadios1"> Male </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        #gender="ngModel"
+        name="gender"
+        id="gender"
+        value="option2"
+        [(ngModel)]="user.gender"
+        required
+      />
+      <label class="form-check-label" for="exampleRadios2"> Female </label>
+    </div>
+  </div>
+  <div>
+    <div *ngIf="gender?.errors?.required">
+      <p>Gender is required</p>
+    </div>
+  </div>
+  <div class="form-check my-2">
+    <label class="form-check-label" for="city"> City </label>
+    <select
+      class="form-control"
+      #cityName="ngModel"
+      id="cityName"
+      name="cityName"
+      [(ngModel)]="user.city"
+      required
+    >
+      <option>Newyork</option>
+      <option>Chicago</option>
+      <option>Denver</option>
+    </select>
+  </div>
+  <div *ngIf="cityName?.errors?.required">city is required</div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea
+      class="form-control"
+      #address="ngModel"
+      [(ngModel)]="user.address"
+      id="address"
+      name="address"
+      rows="3"
+      required
+    ></textarea>
+  </div>
+  <div *ngIf="address?.errors?.required">address is required</div>
+  <div class="form-check">
+    <input
+      type="checkbox"
+      class="form-check-input"
+      #terms="ngModel"
+      [(ngModel)]="user.terms"
+      id="terms"
+      name="terms"
+      required
+    />
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <div *ngIf="terms?.errors?.required">
+    <p>Please check the terms</p>
+  </div>
+
+  <div>
+    {{ loginForm.value | json }}
+    Form Submitted: {{ loginForm.submitted }} Form Touched:
+    {{ loginForm.touched }}
+    Email Errors: {{ email?.errors | json }} Password Errors: Pass:
+    {{ pass?.errors | json }} City:{{ cityName?.errors | json }} Gender:{{
+      gender?.errors | json
+    }}
+    Address:{{ address?.errors | json }} Terms:{{ terms?.errors | json }}
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <button class="btn btn-warning" (click)="resetForm(loginForm)">Reset</button>
+</form>

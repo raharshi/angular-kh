@@ -1,0 +1,124 @@
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="loginForm.valid && onSubmit()"
+  class="col-lg-6 m-auto"
+>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      name="email"
+      id="email"
+      formControlName="email"
+      aria-describedby="emailHelp"
+      placeholder="Enter email"
+    />
+    <!-- <div>
+      <div *ngIf="loginForm.submitted && loginForm.email?.errors?.required">
+        <p>email error</p>
+      </div>
+      <div *ngIf="loginForm.submitted && loginForm.email?.errors?.minlength">
+        <p>Min Length should be 2</p>
+      </div>
+      <div *ngIf="loginForm.submitted && loginForm.email?.errors?.pattern">
+        <p>Please enter a valid pattern</p>
+      </div>
+    </div> -->
+
+    <small id="emailHelp" class="form-text text-muted"
+      >We'll never share your email with anyone else.</small
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      name="password"
+      formControlName="password"
+      id="exampleInputPassword1"
+      placeholder="Password"
+    />
+  </div>
+  <!-- <div>
+    <div *ngIf="loginForm.submitted && loginForm.pass?.errors?.required">
+      <p>password error</p>
+    </div>
+    <div *ngIf="loginForm.submitted && loginForm.pass?.errors?.minlength">
+      <p>Min Length should be 4</p>
+    </div>
+  </div> -->
+  <div class="d-flex">
+    <div class="form-check mr-5">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="exampleRadios"
+        id="gender"
+        formControlName="gender"
+        value="male"
+      />
+      <label class="form-check-label" for="exampleRadios1"> Male </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="gender"
+        formControlName="gender"
+        id="gender"
+        value="female"
+      />
+      <label class="form-check-label" for="exampleRadios2"> Female </label>
+    </div>
+  </div>
+  <!-- <div>
+    <div *ngIf="loginForm.gender?.errors?.required">
+      <p>Gender is required</p>
+    </div>
+  </div> -->
+  <div class="form-check my-2">
+    <label class="form-check-label" for="city"> City </label>
+    <select
+      class="form-control"
+      id="cityName"
+      formControlName="city"
+      name="cityName"
+    >
+      <option>Newyork</option>
+      <option>Chicago</option>
+      <option>Denver</option>
+    </select>
+  </div>
+  <!-- <div *ngIf="loginForm.cityName?.errors?.required">city is required</div> -->
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea
+      class="form-control"
+      id="address"
+      formControlName="address"
+      name="address"
+      rows="3"
+    ></textarea>
+  </div>
+  <!-- <div *ngIf="loginForm.address?.errors?.required">address is required</div> -->
+  <div class="form-check">
+    <input
+      type="checkbox"
+      class="form-check-input"
+      formControlName="terms"
+      id="terms"
+      name="terms"
+    />
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <!-- <div *ngIf="loginForm.terms?.errors?.required">
+    <p>Please check the terms</p>
+  </div> -->
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <button class="btn btn-warning" (click)="resetForm()">Reset</button>
+</form>

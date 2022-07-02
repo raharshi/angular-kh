@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { BindingComponent } from './binding/binding.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirectivesComponent } from './directives/directives.component';
 import { CommunicationComponent } from './communication/communication.component';
 import { ParentComponent } from './communication/parent/parent.component';
@@ -14,6 +14,7 @@ import { ContentProjectionComponent } from './content-projection/content-project
 import { CpParentComponent } from './content-projection/cp-parent/cp-parent.component';
 import { CpChildComponent } from './content-projection/cp-child/cp-child.component';
 import { FormsComponent } from './forms/forms.component';
+import { ReactiveFormsComponent } from './forms/reactive-forms/reactive-forms.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +28,14 @@ import { FormsComponent } from './forms/forms.component';
     ContentProjectionComponent,
     CpParentComponent,
     CpChildComponent,
-    FormsComponent
+    FormsComponent,
+    ReactiveFormsComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -22,9 +22,33 @@ export class ReactiveFormsComponent implements OnInit {
     });
   }
 
+  get email() {
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+
+  get city() {
+    return this.loginForm.get('city');
+  }
+
+  get gender() {
+    return this.loginForm.get('gender');
+  }
+
+  get terms() {
+    return this.loginForm.get('terms');
+  }
+
+  get address() {
+    return this.loginForm.get('address');
+  }
+
   resetForm() {
     this.loginForm.reset();
-    this.loginForm.patchValue({ email: 'test@gamil.com' });
+    this.loginForm.patchValue({ email: 'test@gmail.com' });
   }
 
   onSubmit() {

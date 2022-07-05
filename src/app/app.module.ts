@@ -15,6 +15,11 @@ import { CpParentComponent } from './content-projection/cp-parent/cp-parent.comp
 import { CpChildComponent } from './content-projection/cp-child/cp-child.component';
 import { FormsComponent } from './forms/forms.component';
 import { ReactiveFormsComponent } from './forms/reactive-forms/reactive-forms.component';
+import { UserService } from './services/user.service';
+import { UsersComponent } from './users/users.component';
+import { UserComponent } from './users/user/user.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ObservableExamplesComponent } from './observable-examples/observable-examples.component'
 
 @NgModule({
   declarations: [
@@ -29,15 +34,19 @@ import { ReactiveFormsComponent } from './forms/reactive-forms/reactive-forms.co
     CpParentComponent,
     CpChildComponent,
     FormsComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
+    UsersComponent,
+    UserComponent,
+    ObservableExamplesComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })

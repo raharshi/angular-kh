@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
-  // templateUrl: './header.component.html',
-  template: `<h1> 
-                Header 
-              </h1>`,
-  // styleUrls: ['./header.component.css']
-  styles: ['h1{color:red}', 'h1{font-weight:300}']
+  templateUrl: './header.component.html',
+  // template: `<h1> 
+  //               Header 
+  //             </h1>`,
+  styleUrls: ['./header.component.css']
+  // styles: ['h1{color:red}', 'h1{font-weight:300}']
 })
 export class HeaderComponent implements OnInit {
 
@@ -18,12 +18,12 @@ export class HeaderComponent implements OnInit {
   age!: any;
 
   constructor() {
-    console.log("this is header constructor");
+    // console.log("this is header constructor");
   }
 
   ngOnInit(): void {
-    console.log("this is header onInit");
-    this.getHeader();
+    // console.log("this is header onInit");
+    // this.getHeader();
   }
 
   protected getHeader() {

@@ -19,7 +19,10 @@ import { UserService } from './services/user.service';
 import { UsersComponent } from './users/users.component';
 import { UserComponent } from './users/user/user.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ObservableExamplesComponent } from './observable-examples/observable-examples.component'
+import { ObservableExamplesComponent } from './observable-examples/observable-examples.component';
+import { SubjectComponent } from './observable-examples/subject/subject.component'
+import { SharedService } from './services/shared.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -37,16 +40,18 @@ import { ObservableExamplesComponent } from './observable-examples/observable-ex
     ReactiveFormsComponent,
     UsersComponent,
     UserComponent,
-    ObservableExamplesComponent
+    ObservableExamplesComponent,
+    SubjectComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [UserService, SharedService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-observable-examples',
@@ -10,11 +11,11 @@ import { filter } from 'rxjs/operators';
 export class ObservableExamplesComponent implements OnInit {
 
   subscription!: Subscription;
-  constructor() { }
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    this.testPromise();
-    this.testObs();
+    // this.testPromise();
+    // this.testObs();
   }
 
   testPromise() {
@@ -62,5 +63,9 @@ export class ObservableExamplesComponent implements OnInit {
 
   unSubscribe() {
     this.subscription.unsubscribe();
+  }
+
+  updateBS() {
+    this.sharedService.updateBS('Behavior Subject is Updated');
   }
 }

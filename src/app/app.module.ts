@@ -23,6 +23,8 @@ import { ObservableExamplesComponent } from './observable-examples/observable-ex
 import { SubjectComponent } from './observable-examples/subject/subject.component'
 import { SharedService } from './services/shared.service';
 import { AppRoutingModule } from './app-routing.module';
+import { SearchPipe } from './pipes/search.pipe';
+import { CustomTileCasePipe } from './pipes/custom-tile-case.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { AppRoutingModule } from './app-routing.module';
     UsersComponent,
     UserComponent,
     ObservableExamplesComponent,
-    SubjectComponent
+    SubjectComponent,
+    SearchPipe,
+    CustomTileCasePipe
   ],
   imports: [
     BrowserModule,

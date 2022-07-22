@@ -1,62 +1,77 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
+import { InlineCompComponent } from './inline-comp/inline-comp.component';
+import { NoTestComponent } from './no-test/no-test.component';
 import { BindingComponent } from './binding/binding.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirectivesComponent } from './directives/directives.component';
-import { CommunicationComponent } from './communication/communication.component';
-import { ParentComponent } from './communication/parent/parent.component';
-import { ChildComponent } from './communication/child/child.component';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './parent/child/child.component';
+import { LifecycleHooksComponent } from './lifecycle-hooks/lifecycle-hooks.component';
+import { LcChildComponent } from './lifecycle-hooks/lc-child/lc-child.component';
 import { ContentProjectionComponent } from './content-projection/content-projection.component';
-import { CpParentComponent } from './content-projection/cp-parent/cp-parent.component';
-import { CpChildComponent } from './content-projection/cp-child/cp-child.component';
+import { UsersComponent } from './content-projection/users/users.component';
 import { FormsComponent } from './forms/forms.component';
+import { TdFormsComponent } from './forms/td-forms/td-forms.component';
 import { ReactiveFormsComponent } from './forms/reactive-forms/reactive-forms.component';
-import { UserService } from './services/user.service';
-import { UsersComponent } from './users/users.component';
-import { UserComponent } from './users/user/user.component';
-import { HttpClientModule } from '@angular/common/http';
+import { MatInputModule } from '@angular/material/input';
+import { DataConsistencyComponent } from './data-consistency/data-consistency.component';
+import { DcChildComponent } from './data-consistency/dc-child/dc-child.component';
 import { ObservableExamplesComponent } from './observable-examples/observable-examples.component';
-import { SubjectComponent } from './observable-examples/subject/subject.component'
-import { SharedService } from './services/shared.service';
+import { SubjectComponent } from './observable-examples/subject/subject.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { DcUserComponent } from './data-consistency/dc-user/dc-user.component';
+import { PipesExamplesComponent } from './pipes/pipes-examples/pipes-examples.component';
 import { SearchPipe } from './pipes/search.pipe';
-import { CustomTileCasePipe } from './pipes/custom-tile-case.pipe';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    HomeComponent,
+    ContactComponent,
+    InlineCompComponent,
+    NoTestComponent,
     BindingComponent,
     DirectivesComponent,
-    CommunicationComponent,
     ParentComponent,
     ChildComponent,
+    LifecycleHooksComponent,
+    LcChildComponent,
     ContentProjectionComponent,
-    CpParentComponent,
-    CpChildComponent,
-    FormsComponent,
-    ReactiveFormsComponent,
     UsersComponent,
-    UserComponent,
+    FormsComponent,
+    TdFormsComponent,
+    ReactiveFormsComponent,
+    DataConsistencyComponent,
+    DcChildComponent,
     ObservableExamplesComponent,
     SubjectComponent,
-    SearchPipe,
-    CustomTileCasePipe
+    NavBarComponent,
+    DcUserComponent,
+    PipesExamplesComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
-    NgbModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatButtonModule,
     FormsModule,
+    MatInputModule,
     ReactiveFormsModule,
-    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [UserService, SharedService],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

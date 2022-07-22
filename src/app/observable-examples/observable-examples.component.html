@@ -1,7 +1,5 @@
 <p>observable-examples works!</p>
-<div class="bg-info text-white w-50 h-50">
-  <app-subject></app-subject>
-</div>
-
-<button class="btn btn-danger" (click)="unSubscribe()">unSub</button>
-<button class="btn btn-info" (click)="updateBS()">UpdateBS</button>
+<app-subject *ngIf="showChild"></app-subject>
+<button mat-raised-button color="primary" (click)="showChild = !showChild">
+  show child
+</button>

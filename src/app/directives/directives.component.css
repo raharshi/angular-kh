@@ -1,9 +1,9 @@
 .red{
-    color:red
+    background-color: red;
+    color: white;
 }
-.orange{
-    color:orange
-}
-.blue{
-    color: blue;
+
+.green{
+    background-color: blueviolet;
+    color: rgb(0, 0, 0);
 }

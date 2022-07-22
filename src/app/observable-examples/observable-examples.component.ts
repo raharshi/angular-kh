@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-observable-examples',
@@ -10,22 +9,25 @@ import { SharedService } from '../services/shared.service';
 })
 export class ObservableExamplesComponent implements OnInit {
 
-  subscription!: Subscription;
-  constructor(private sharedService: SharedService) { }
+  showChild!: boolean;
+  constructor() { }
 
   ngOnInit(): void {
+    this.showChild = true;
     // this.testPromise();
-    // this.testObs();
+    // this.testObservable();
   }
 
   testPromise() {
+    console.log("Testing Promise...");
     const prom = new Promise(resolve => {
-      console.log("Promise is Calling...");
+      console.log("Promise Creation..")
       setTimeout(() => {
-        resolve("Promise");
-        resolve("Promise1");
-        resolve("Promise2");
-      }, 1000)
+        resolve("This is Promise Data");
+        resolve("This is Promise Data1");
+        resolve("This is Promise Data2");
+        resolve("This is Promise Data3");
+      }, 1000);
     });
 
     prom.then(data => {
@@ -33,39 +35,25 @@ export class ObservableExamplesComponent implements OnInit {
     })
   }
 
-  testObs() {
-    // const obs = new Observable(obs => {
-    //   console.log("Observable is Calling...");
-    //   setTimeout(() => {
-    //     obs.next("Observable");
-    //     obs.next("Observable1");
-    //     obs.next("Observable2");
-    //   }, 1000);
-    // });
-
-    // obs.pipe(filter(d => d == "Observable1")).subscribe(data => {
-    //   console.log(data);
-    // });
-
-    let counter = 0;
+  testObservable() {
+    console.log("Testing Observable..");
     const obs = new Observable(obs => {
-      console.log("Observable is Calling...");
-      setInterval(() => {
-        counter++;
-        obs.next(counter);
+      console.log("Observable Creation...");
+      setTimeout(() => {
+        obs.next("This is Obs Data");
+        obs.next("This is Obs Data1");
+        obs.next("This is Obs Data2");
+        obs.next("This is Obs Data3");
       }, 1000)
-    })
-
-    this.subscription = obs.subscribe(data => {
-      console.log(data);
     });
+
+    // obs.subscribe(data => {
+    //   console.log(data);
+    // })
+
+    obs.pipe(filter(value => value == "This is Obs Data2")).subscribe(data => {
+      console.log(data);
+    })
   }
 
-  unSubscribe() {
-    this.subscription.unsubscribe();
-  }
-
-  updateBS() {
-    this.sharedService.updateBS('Behavior Subject is Updated');
-  }
 }

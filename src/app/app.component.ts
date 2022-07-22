@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  ngOnInit(): void {
-    // console.log("App Component Loaded...");
+export class AppComponent {
+
+  showHeader: boolean = false;
+  constructor() {
+
   }
-  title = 'angular12';
+  title = 'angular-kh';
+  header: HeaderComponent = new HeaderComponent();
 
-
+  toggleHeader() {
+    this.showHeader = !this.showHeader;
+  }
 }

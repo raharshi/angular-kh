@@ -1,24 +1,23 @@
-<h1>One Way Data-Binding</h1>
+<h1>{{ title }}</h1>
 
-<p>{{ type1 }}</p>
-<p>{{ obj | json }}</p>
+<h1>One Way Data Binding</h1>
+<h3>{{ test1 }}</h3>
+<div class="image">
+  <img src="{{ imgLoc }}" alt="" width="300" height="100" />
+</div>
+<button disabled="{{ disableBtn }}">Button</button>
+<h3>Property Binding</h3>
 
-<h2>Property Binding</h2>
-<img [src]="imgLocation" alt="Girl in a jacket" width="300" height="400" />
+<div class="image">
+  <img [src]="imgLoc" alt="" width="300" height="100" />
+</div>
+<button [disabled]="disableBtn">Button</button>
 
-<section class="example-section">
-  <mat-checkbox class="example-margin" disabled="{{ checked }}"
-    >Checked</mat-checkbox
-  >
-</section>
+<h3>Event Binding</h3>
 
-<h1>Event Binding</h1>
+<button (click)="toggle()">toggleHeader</button>
 
-<button mat-button color="primary" (click)="handler('Angular')">
-  Click Me
-</button>
-
-<h1>Two-way Data-Binding</h1>
+<h3>Two-way Binding</h3>
 <input type="text" [(ngModel)]="name" />
 
-<p>{{ name }} is typing now..</p>
+<p>Welcome {{ name }}</p>

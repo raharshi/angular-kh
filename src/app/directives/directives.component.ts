@@ -6,22 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./directives.component.css']
 })
 export class DirectivesComponent implements OnInit {
-  isRed!: boolean;
-  userNames!: string[];
-  name!: string;
+
+  colors: string[] = [
+    'red',
+    'orange',
+    'blue'
+  ]
+
+  clr!: string;
+  display: boolean = true;
   constructor() { }
 
   ngOnInit(): void {
-    this.isRed = false;
-
-    this.userNames = ["Rob", "JC", "Clair", "Kenn", "Hani"];
-    this.name = "Rob";
   }
 
-  changeColor() {
-    this.isRed = !this.isRed;
-    this.userNames = this.userNames.slice(1);
-    this.name = "Angular";
+  changeColor(color: string) {
+    this.clr = color;
   }
-
 }

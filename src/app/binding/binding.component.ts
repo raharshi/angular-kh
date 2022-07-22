@@ -7,25 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BindingComponent implements OnInit {
 
-  type1: any = "This is Interpolation";
-  imgLocation!: string;
-  checked!: boolean;
-  name!: string;
-  obj: any;
-
+  title = "Data Binding";
+  test1 = "Interpolation Test";
+  imgLoc = "assets/hotel4.jpg";
+  name = "angular";
+  disableBtn: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
-    this.type1 = "false";
-    this.imgLocation = "https://www.w3schools.com/tags/img_girl.jpg";
-    this.checked = false;
-
-    this.name = "Angular";
-    this.obj = { name: 'angular' };
   }
 
-  handler(userName: string) {
-    console.log(userName + " Clicked me..");
-    this.name = "Rishi";
+  toggle() {
+    const object = { title: "title", name: "name" };
+    object.title = "angular";
+    // object={title:"angular"};
+
+    if (this.title != null && this.title != undefined) {
+      console.log(this.title);
+    }
+    this.title = "Data Binding in Angular"
   }
 }

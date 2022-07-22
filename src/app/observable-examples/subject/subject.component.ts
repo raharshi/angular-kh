@@ -1,114 +1,138 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AsyncSubject, BehaviorSubject, Observable, ReplaySubject, Subject, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { AsyncSubject, BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
+import { ajax } from 'rxjs/ajax';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-subject',
-  templateUrl: './subject.component.html',
-  styleUrls: ['./subject.component.css']
-})
-export class SubjectComponent implements OnInit, OnDestroy {
+  template: `
+  <h1>{{message}}</h1>  
+  <p>
+      subject works!
+    </p>
 
-  subscription!: Subscription;
-  constructor() { }
+  `,
+  styles: [
+  ]
+})
+export class SubjectComponent implements OnInit {
+  message!: string;
+
+  constructor(private userService: UserService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
     // this.testObs();
-    // this.testObsRandom();
-    // this.testSub();
+    // this.testSubject();
+    // this.getUsers();
+    // this.testBehaviorSub();
+    // this.getUpdatedBS();
     // this.testReplaySubject();
-    // this.testBehaviorSubject();
     this.testAsyncSubject();
   }
 
   testObs() {
-    let counter = 0;
-    const obs = new Observable(obs => {
-      setInterval(() => {
-        counter++;
-        obs.next(counter);
-      }, 1000);
-    })
+    const obs = new Observable(obs => obs.next(Math.random()));
 
-    this.subscription = obs.subscribe(data => {
-      console.log(data);
-    })
+    // subscriber 1
+    obs.subscribe(data => console.log("Obs Subscriber 1: " + data));
+
+    // subscriber 2
+    obs.subscribe(data => console.log("Obs Subscriber 2: " + data));
   }
 
-  testObsRandom() {
-    const obs = new Observable(obs => {
-      obs.next(Math.random());
-    })
-
-    obs.subscribe(data => {
-      console.log("Obs Sub1 :" + data);
-    })
-
-    obs.subscribe(data => {
-      console.log("Obs Sub2 :" + data);
-    })
-  }
-
-  testSub() {
+  testSubject() {
     const sub = new Subject();
 
-    sub.subscribe(data => console.log("Subject Sub1 : " + data));
-    // sub.subscribe(data => console.log("Subject Sub2 : " + data));
+    // subscriber 1
+    sub.subscribe(data => console.log("Subject Subscriber 1: " + data));
 
-    sub.next(Math.random());
+    // subscriber 2
+    sub.subscribe(data => console.log("Subject Subscriber 2: " + data));
+
     sub.next(Math.random());
 
   }
 
-  testBehaviorSubject() {
-    const bSub = new BehaviorSubject(123);
+  getUsers() {
+    const sub = new Subject();
 
-    bSub.next(234);
-    bSub.next(345);
-    bSub.next(456);
-    bSub.next(567);
+    let data: any;
 
-    bSub.subscribe(data => console.log("BSubject Sub1 : " + data));
-    // bSub.subscribe(data => console.log("BSubject Sub2 : " + data));
+    data = ajax('https://jsonplaceholder.typicode.com/users');
 
+    // subscriber 1
+    sub.subscribe(d => {
+      console.log(d);
+    });
+
+    // subscriber 2
+    sub.subscribe(d => console.log(d));
+
+    sub.next(data);
+
+  }
+
+  testBehaviorSub() {
+    // subject
+    const sub = new Subject();
+
+    // subscriber 1
+    sub.subscribe(data => console.log("Subject Subscriber 1: " + data));
+
+    // subscriber 2
+    sub.subscribe(data => console.log("Subject Subscriber 2: " + data));
+
+    sub.next();
+
+    // Behavior Subject
+
+    const bSub = new BehaviorSubject<number>(10);
+
+    // subscriber 1
+    bSub.subscribe(data => console.log("BehaviorSubject Subscriber 1: " + data));
+
+    // subscriber 2
+    bSub.subscribe(data => console.log("BehaviorSubject Subscriber 2: " + data));
+
+    bSub.next(2022);
+  }
+
+  getUpdatedBS() {
+    this.sharedService.bSubject.subscribe(data => {
+      this.message = data;
+    })
   }
 
   testReplaySubject() {
-    const rSub = new ReplaySubject(3);
+    const replaySub = new ReplaySubject(2)
 
-    rSub.next(234);
-    rSub.next(345);
-    rSub.next(234);
-    rSub.next(345);
-    rSub.next(234);
-    rSub.next(345);
-    rSub.next(234);
-    rSub.next(345);
+    replaySub.next(10);
+    replaySub.next(20);
+    replaySub.next(30);
+    replaySub.next(40);
 
-    rSub.subscribe(data => console.log("RSubject Sub1 : " + data));
-    // rSub.subscribe(data => console.log("RSubject Sub2 : " + data));
-
+    // sub1
+    replaySub.subscribe(d => console.log(d));
 
   }
 
   testAsyncSubject() {
-    const aSub = new AsyncSubject();
-    aSub.next(123);
-    aSub.next(345);
-    aSub.next(456);
-    aSub.next(567);
-    aSub.next(678);
+    const asyncSub = new AsyncSubject();
 
-    aSub.subscribe(data => console.log("ASubject Sub1 : " + data));
+    asyncSub.next(10);
+    asyncSub.next(20);
+    asyncSub.next(30);
+    asyncSub.next(40);
 
-    aSub.complete();
+    asyncSub.complete();
 
+    // sub1
+    asyncSub.subscribe(d => console.log(d));
 
-  }
+    asyncSub.next(50);
 
-  ngOnDestroy(): void {
-    console.log("child component is destroyed..");
-    if (this.subscription != null && this.subscription != undefined)
-      this.subscription.unsubscribe();
+    asyncSub.complete();
   }
 
 }
